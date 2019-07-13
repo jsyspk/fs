@@ -99,6 +99,6 @@ class WritableFileTest extends TestCase
     public function tearDown(): void
     {
         parent::tearDown();
-        unset($this->root);
+        unset($this->rootDir);
     }
 }
