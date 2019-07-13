@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d3520f58fc10b67fa8f9b8101146a1a5",
+    "content-hash": "c0aaec07f9066d9765cd8c2dafd37fe4",
     "packages": [],
     "packages-dev": [
         {
@@ -62,6 +62,57 @@
                 "instantiate"
             ],
             "time": "2019-07-02T13:37:32+00:00"
+        },
+        {
+            "name": "mikey179/vfsstream",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bovigo/vfsStream.git",
+                "reference": "b46b9dfee1ce1e7c26a4389f07182373ec489c4c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/b46b9dfee1ce1e7c26a4389f07182373ec489c4c",
+                "reference": "b46b9dfee1ce1e7c26a4389f07182373ec489c4c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "bovigo/assert": "^5.0",
+                "bovigo/callmap": "^5.0",
+                "phpstan/phpstan": "^0.11.5",
+                "phpstan/phpstan-deprecation-rules": "^0.11.0",
+                "phpstan/phpstan-phpunit": "^0.11.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "org\\bovigo\\vfs\\": "src/main/php/org/bovigo/vfs"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Frank Kleine",
+                    "homepage": "http://frankkleine.de/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Virtual file system to mock the real file system in unit tests.",
+            "homepage": "http://vfs.bovigo.org/",
+            "time": "2019-04-24T09:58:18+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1535,10 +1586,14 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "phpunit/phpunit": 20
+        "phpunit/phpunit": 20,
+        "mikey179/vfsstream": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=7.3",
+        "ext-fileinfo": "*"
+    },
     "platform-dev": []
 }
