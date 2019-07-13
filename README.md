@@ -31,7 +31,7 @@ This lib is just a small step towards a better and cleaner php-world.
 Readable file
 
 ```
-use J\FS;
+use J\FS; // or j\fs;
 
 $rf = new ReadableFile("/some/readable/file.sample.txt");
 
