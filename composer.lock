@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jsyspk/types.git",
-                "reference": "712dfa80629baa8b64a65ebb6b639499a0d6883d"
+                "reference": "79e635006675296598c03e51391f8b8d42f88883"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jsyspk/types/zipball/712dfa80629baa8b64a65ebb6b639499a0d6883d",
-                "reference": "712dfa80629baa8b64a65ebb6b639499a0d6883d",
+                "url": "https://api.github.com/repos/jsyspk/types/zipball/79e635006675296598c03e51391f8b8d42f88883",
+                "reference": "79e635006675296598c03e51391f8b8d42f88883",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
                 }
             ],
             "description": "Filesystem library for php 7.4+",
-            "time": "2019-07-14T01:45:56+00:00"
+            "time": "2019-07-14T15:37:39+00:00"
         }
     ],
     "packages-dev": [

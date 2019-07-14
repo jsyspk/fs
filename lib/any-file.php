@@ -53,7 +53,7 @@ abstract class AnyFile implements File
     private function getInfo(): bool
     {
         if(!$this->fullName){
-            $fileInfo = pathinfo($this->subjectFile->value());   //     /www/htdocs/inc/lib.inc.php
+            $fileInfo = pathinfo($this->subjectFile->path());   //     /www/htdocs/inc/lib.inc.php
             $this->dirName = $fileInfo['dirname'];      //     /www/htdocs/inc
             $this->fullName = $fileInfo['basename'];    //     lib.inc.php
             $this->extension = $fileInfo['extension'];  //     php
@@ -64,11 +64,11 @@ abstract class AnyFile implements File
 
     public function mime(): string
     {
-        return mime_content_type($this->subjectFile->value());
+        return mime_content_type($this->subjectFile->path());
     }
 
     public function fullPath(): string
     {
-        return $this->subjectFile->value();
+        return $this->subjectFile->path();
     }
 }
