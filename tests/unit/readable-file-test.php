@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace J\Tests\Unit;
 
+use J\FS\FilePath;
 use J\FS\ReadableFile;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamFile;
@@ -39,32 +40,6 @@ class ReadableFileTest extends TestCase
         $rFile = new ReadableFile();
     }
 
-    public function test_empty_staring_as_file_parameter_must_not_be_accepted():void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("Given file name ''  is empty");
-        $this->expectExceptionCode(20000);
-        $rFile = new ReadableFile("");
-    }
-
-    public function test_dir_path_must_not_be_accepted():void
-    {
-        $dir = $this->rootDir->url() . '/base-dir/sub-dir1/';
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("Given file path '$dir' is not a file but it is a directory");
-        $this->expectExceptionCode(20001);
-        $rFile = new ReadableFile($dir);
-    }
-
-    public function test_non_existent_files_must_not_be_accepted():void
-    {
-        $noFile = $this->rootDir->url() . '/base-dir/sub-dir1/some-non-existing-file.pdf';
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage("Given file '$noFile' doesn't exist");
-        $this->expectExceptionCode(20002);
-        $rFile = new ReadableFile($noFile);
-    }
-
     public function test_non_readable_files_must_not_be_accepted():void
     {
         $file = new vfsStreamFile('no-permission-file.txt', 0400);
@@ -76,16 +51,17 @@ class ReadableFileTest extends TestCase
         $this->assertTrue($this->rootDir->hasChild('no-permission-file.txt'));
 
         $noPermissionFile = $this->rootDir->url() . '/no-permission-file.txt';
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage("Given file '$noPermissionFile' is not accessible. Please check permissions");
+        $filePath = new FilePath($noPermissionFile);
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage("Given file '$filePath' is not accessible. Please check permissions");
         $this->expectExceptionCode(20003);
-        $rFile = new ReadableFile($noPermissionFile);
+        $rFile = new ReadableFile($filePath);
     }
 
     public function test_must_work_with_a_valid_readable_file()
     {
         $testFile = $this->rootDir->url() . '/base-dir/sub-dir0/test.file.txt';
-        $rFile = new ReadableFile($testFile);
+        $rFile = new ReadableFile(new FilePath($testFile));
         $this->assertInstanceOf('J\FS\ReadableFile', $rFile);
         $this->assertEquals('J\FS\ReadableFile', get_class($rFile));
         $this->assertEquals($rFile->fullPath(), $testFile, 'Full file path');

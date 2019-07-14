@@ -15,22 +15,9 @@ abstract class AnyFile implements File
     protected $coreName;   // name of the file excluding extension
 
 
-    public function __construct(FilePath $file)
+    public function __construct(FilePath $filePath)
     {
-        if(empty($file))
-        {
-            throw new InvalidArgumentException("Given file name '$file'  is empty", 20000);
-        }
-        if(is_dir($file))
-        {
-            throw new InvalidArgumentException("Given file path '$file' is not a file but it is a directory", 20001);
-        }
-        if(!is_file($file))
-        {
-            throw new InvalidArgumentException("Given file '$file' doesn't exist", 20002);
-        }
-
-        $this->subjectFile = $file;
+        $this->subjectFile = $filePath;
     }
 
     public function dir(): string
@@ -66,7 +53,7 @@ abstract class AnyFile implements File
     private function getInfo(): bool
     {
         if(!$this->fullName){
-            $fileInfo = pathinfo($this->subjectFile);   //     /www/htdocs/inc/lib.inc.php
+            $fileInfo = pathinfo($this->subjectFile->value());   //     /www/htdocs/inc/lib.inc.php
             $this->dirName = $fileInfo['dirname'];      //     /www/htdocs/inc
             $this->fullName = $fileInfo['basename'];    //     lib.inc.php
             $this->extension = $fileInfo['extension'];  //     php
@@ -77,11 +64,11 @@ abstract class AnyFile implements File
 
     public function mime(): string
     {
-        return mime_content_type($this->subjectFile);
+        return mime_content_type($this->subjectFile->value());
     }
 
     public function fullPath(): string
     {
-        return $this->subjectFile;
+        return $this->subjectFile->value();
     }
 }

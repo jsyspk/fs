@@ -5,7 +5,6 @@ namespace J\Tests\Unit;
 
 use J\FS\FilePath;
 use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamFile;
 use PHPUnit\Framework\TestCase;
 
 use \ArgumentCountError;
@@ -42,8 +41,8 @@ class FilePathTest extends TestCase
     public function test_empty_staring_as_file_parameter_must_not_be_accepted():void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("Given file name ''  is empty");
-        $this->expectExceptionCode(20000);
+        $this->expectExceptionMessage("Given path '' is empty and can not be used as a valid path");
+        $this->expectExceptionCode(30000);
         $rFile = new FilePath("");
     }
 
@@ -59,41 +58,10 @@ class FilePathTest extends TestCase
     public function test_non_existent_files_must_not_be_accepted():void
     {
         $noFile = $this->rootDir->url() . '/base-dir/sub-dir1/some-non-existing-file.pdf';
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage("Given file '$noFile' doesn't exist");
-        $this->expectExceptionCode(20002);
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage("Given file path '$noFile' doesn't map to a valid file");
+        $this->expectExceptionCode(20005);
         $rFile = new FilePath($noFile);
-    }
-
-    public function test_non_readable_files_must_not_be_accepted():void
-    {
-        $file = new vfsStreamFile('no-permission-file.txt', 0400);
-        $file->chown(vfsStream::getCurrentUser() + 1);
-        $file->chgrp(vfsStream::getCurrentGroup() + 1);
-        $file->setContent('some sample text');
-        $this->rootDir->addChild($file);
-
-        $this->assertTrue($this->rootDir->hasChild('no-permission-file.txt'));
-
-        $noPermissionFile = $this->rootDir->url() . '/no-permission-file.txt';
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage("Given file '$noPermissionFile' is not accessible. Please check permissions");
-        $this->expectExceptionCode(20003);
-        $rFile = new FilePath($noPermissionFile);
-    }
-
-    public function test_must_work_with_a_valid_readable_file()
-    {
-        $testFile = $this->rootDir->url() . '/base-dir/sub-dir0/test.file.txt';
-        $rFile = new FilePath($testFile);
-        $this->assertInstanceOf('J\FS\FilePath', $rFile);
-        $this->assertEquals('J\FS\FilePath', get_class($rFile));
-        $this->assertEquals($rFile->fullPath(), $testFile, 'Full file path');
-        $this->assertEquals($rFile->name(), 'test.file.txt', 'Full file name only');
-        $this->assertEquals($rFile->dir(), $this->rootDir->url() . '/base-dir/sub-dir0', 'File containing dir');
-        $this->assertEquals($rFile->extension(), 'txt', 'File extension');
-        $this->assertEquals($rFile->mime(), 'text/plain', 'File mime type');
-        $this->assertEquals($rFile->coreName(), 'test.file', 'File mime type');
     }
 
     public function tearDown(): void

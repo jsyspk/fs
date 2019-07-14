@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jsyspk/types.git",
-                "reference": "7e41b4c36a03a54867a863893598fa5d4baa0b80"
+                "reference": "712dfa80629baa8b64a65ebb6b639499a0d6883d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jsyspk/types/zipball/7e41b4c36a03a54867a863893598fa5d4baa0b80",
-                "reference": "7e41b4c36a03a54867a863893598fa5d4baa0b80",
+                "url": "https://api.github.com/repos/jsyspk/types/zipball/712dfa80629baa8b64a65ebb6b639499a0d6883d",
+                "reference": "712dfa80629baa8b64a65ebb6b639499a0d6883d",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
                 }
             ],
             "description": "Filesystem library for php 7.4+",
-            "time": "2019-07-14T01:30:46+00:00"
+            "time": "2019-07-14T01:45:56+00:00"
         }
     ],
     "packages-dev": [
@@ -784,12 +784,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d1a4afef8b49b3202411c7648e380e0913e1c265"
+                "reference": "bdc718a9483c7b8c57a40bc701416816c1431efd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d1a4afef8b49b3202411c7648e380e0913e1c265",
-                "reference": "d1a4afef8b49b3202411c7648e380e0913e1c265",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/bdc718a9483c7b8c57a40bc701416816c1431efd",
+                "reference": "bdc718a9483c7b8c57a40bc701416816c1431efd",
                 "shasum": ""
             },
             "require": {
@@ -859,7 +859,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-07-10T05:06:42+00:00"
+            "time": "2019-07-14T08:18:44+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",

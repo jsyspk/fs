@@ -8,12 +8,13 @@ use \InvalidArgumentException;
 class ReadableFile extends AnyFile
 {
 
-    public function __construct(FilePath $file)
+    public function __construct(FilePath $filePth)
     {
-        parent::__construct($file);
-        if(!is_readable($file))
+        parent::__construct($filePth);
+        $path = $filePth->value();
+        if(!is_readable($path))
         {
-            throw new InvalidArgumentException("Given file '$file' is not accessible. Please check permissions", 20003);
+            throw new InvalidArgumentException("Given file '$path' is not accessible. Please check permissions", 20003);
         }
     }
 
