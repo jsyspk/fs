@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace J\FS;
 
 use \InvalidArgumentException;
-use phpDocumentor\Reflection\Types\This;
 
 abstract class AnyFile implements File
 {
@@ -16,7 +15,7 @@ abstract class AnyFile implements File
     protected $coreName;   // name of the file excluding extension
 
 
-    public function __construct(string $file)
+    public function __construct(FilePath $file)
     {
         if(empty($file))
         {

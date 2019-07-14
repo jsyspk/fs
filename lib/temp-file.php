@@ -6,7 +6,7 @@ namespace J\FS;
 class TempFile extends AnyFile
 {
 
-    public function __construct(string $file)
+    public function __construct(FilePath $file)
     {
         parent::__construct($file);
     }

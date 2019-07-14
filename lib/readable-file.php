@@ -8,7 +8,7 @@ use \InvalidArgumentException;
 class ReadableFile extends AnyFile
 {
 
-    public function __construct(string $file)
+    public function __construct(FilePath $file)
     {
         parent::__construct($file);
         if(!is_readable($file))

@@ -16,7 +16,8 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=7.3",
-        "ext-fileinfo": "*"
+        "ext-fileinfo": "*",
+        "j/types": "dev-master"
     },
     "autoload": {
         "classmap": [

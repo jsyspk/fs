@@ -4,8 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0aaec07f9066d9765cd8c2dafd37fe4",
-    "packages": [],
+    "content-hash": "409f98c30981d8f4856f8d1be0681831",
+    "packages": [
+        {
+            "name": "j/types",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jsyspk/types.git",
+                "reference": "7e41b4c36a03a54867a863893598fa5d4baa0b80"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jsyspk/types/zipball/7e41b4c36a03a54867a863893598fa5d4baa0b80",
+                "reference": "7e41b4c36a03a54867a863893598fa5d4baa0b80",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.3@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ],
+                "psr-4": {
+                    "J\\Types\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ali Masood",
+                    "email": "ali@zenex.co.jp"
+                }
+            ],
+            "description": "Filesystem library for php 7.4+",
+            "time": "2019-07-14T01:30:46+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
@@ -1586,6 +1629,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "j/types": 20,
         "phpunit/phpunit": 20,
         "mikey179/vfsstream": 20
     },
