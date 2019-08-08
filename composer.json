@@ -17,7 +17,7 @@
     "require": {
         "php": ">=7.3",
         "ext-fileinfo": "*",
-        "j/types": "dev-master"
+        "j/types": "0.0.*"
     },
     "autoload": {
         "classmap": [
