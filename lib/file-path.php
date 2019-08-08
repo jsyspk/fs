@@ -22,4 +22,9 @@ class FilePath extends AnyPath
             throw new InvalidArgumentException("Given file path '$filePath' doesn't map to a valid file", 20005);
         }
     }
+
+    public function value(): string
+    {
+        return $this->path();
+    }
 }
